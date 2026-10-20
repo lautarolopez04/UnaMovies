@@ -1,12 +1,12 @@
 import React from 'react'
 
-function inicio() {
+function Inicio() {
   return (
-    <div>
-        
-
-    </div>
+    <>
+    
+    
+    </>
   )
 }
 
-export default inicio
+export default Inicio
