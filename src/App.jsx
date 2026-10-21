@@ -1,23 +1,25 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
+import Catalogo from './pages/Catalogo';
+import SobreNosotros from './pages/SobreNosotros';
+import Contacto from './pages/Contacto';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <header />
-      <Routes/>
-
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Navigate to="/inicio" replace />} />
+        <Route path="/inicio" element={<Home />} />
+        <Route path="/catalogo" element={<Catalogo />} />
+        <Route path="/sobre-nosotros" element={<SobreNosotros />} />
+        <Route path="/contacto" element={<Contacto />} />
       </Routes>
-  
-
-    </>
-      
-  )
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
