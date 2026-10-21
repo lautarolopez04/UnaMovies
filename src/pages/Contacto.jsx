@@ -1,3 +1,4 @@
+import React from 'react'
 const Contacto = () => {
   return (
     <div className="container text-light mt-4">

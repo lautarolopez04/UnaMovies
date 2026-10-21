@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Catalogo from './pages/Catalogo';
