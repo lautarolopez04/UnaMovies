@@ -2,6 +2,7 @@ import React from 'react';
 import productos from '../data/productos';
 import { Card } from 'react-bootstrap';
 import { Row, Col, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Catalogo = () => {
   return (
@@ -29,13 +30,12 @@ const Catalogo = () => {
                 <Card.Title>{producto.nombre}</Card.Title>
                 <Card.Text>Precio: ${producto.precio}</Card.Text>
                 <Card.Text>Categoria: {producto.categoria}</Card.Text>
-                <Card.Text>descripción: {producto.descripción}</Card.Text>
                 <Card.Text>
                   {producto.stock > 0
                     ? `Stock: ${producto.stock}`
                     : "Sin stock"}
                 </Card.Text>
-                <Button variant='danger'>Ver detalle</Button>
+                <Link to={`/producto/${producto.id}`}>Ver detalle</Link>
                 <Button
                   variant="secondary"
                   size="sm"
