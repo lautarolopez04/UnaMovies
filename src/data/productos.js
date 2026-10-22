@@ -15,7 +15,7 @@ const productos = [
     imagen: "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=400&auto=format&fit=crop",
     categoria: "Ciencia ficción",
     precio: 18000,
-    descripción: "...",
+    descripción: "Viaje al espacio",
     stock: 6,
     },
 
@@ -26,7 +26,7 @@ const productos = [
     categoria: "Acción" ,
     precio: 12000,
     descripción: "...",
-    stock: 2,
+    stock: 0,
     },
 
     {
