@@ -1,11 +1,21 @@
-import React from 'react'
+import React from 'react';
+import { useState, useEffect } from 'react';
 
-function carrito() {
+function Carrito() {
+  const [cartCount, setCartCount] = useState(0)
+
+  useEffect(() => {
+    document.title = `Carrito: ${cartCount}`
+  }, [cartCount])
+
   return (
-    <>
-    <p>hola</p>
-     </>
+    <div>
+        <h2> Productos del carrito:</h2>
+        <button onClick={() => setCartCount(cartCount + 1)}>
+          Agregar producto
+        </button>
+    </div>
   )
 }
 
-export default carrito
+export default Carrito
