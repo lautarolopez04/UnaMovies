@@ -6,20 +6,34 @@ import SobreNosotros from './pages/SobreNosotros';
 import ProductoDetalles from './pages/ProductoDetalles';
 import Contacto from './pages/Contacto';
 import Carrito from './pages/Carrito';
+import { useState } from 'react';
 import './App.css';
 
 function App() {
+  const [carrito, setCarrito] = useState([]);
+
+  const agregarAlCarrito = (producto) => {
+    setCarrito([...carrito, producto]);
+  };
+
   return (
     <BrowserRouter>
       <Navbar />
+      <p>Películas en el estado: {carrito.length}</p>
       <Routes>
         <Route path="/" element={<Navigate to="/inicio" replace />} />
         <Route path="/inicio" element={<Home />} />
-        <Route path="/catalogo" element={<Catalogo />} />
+        <Route
+          path="/catalogo"
+          element={<Catalogo agregarAlCarrito={agregarAlCarrito} />}
+        />
         <Route path="/producto/:id" element={<ProductoDetalles />} />
         <Route path="/sobre-nosotros" element={<SobreNosotros />} />
         <Route path="/contacto" element={<Contacto />} />
-        <Route path="/carrito" element={<Carrito/>}/>
+        <Route
+          path="/carrito"
+          element={<Carrito carrito={carrito} />}
+        />
       </Routes>
     </BrowserRouter>
   );

@@ -4,7 +4,7 @@ import { Card } from 'react-bootstrap';
 import { Row, Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-const Catalogo = () => {
+const Catalogo = ({ agregarAlCarrito }) => {
   return (
     <div className="container text-light mt-5">
       <h2 className="text-danger fw-bold mb-3">🎬 Catálogo de Películas</h2>
@@ -40,7 +40,12 @@ const Catalogo = () => {
                   variant="secondary"
                   size="sm"
                   className="ms-2"
-                  disabled= {producto.stock === 0}>
+                  disabled={producto.stock === 0}
+                  onClick={() => {
+                    console.log("Película seleccionada:", producto.nombre);
+                    agregarAlCarrito(producto);
+                  }}
+                >
                   🛒 Carrito
                 </Button>
               </Card.Body>
