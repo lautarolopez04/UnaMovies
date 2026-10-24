@@ -6,24 +6,19 @@ import SobreNosotros from './pages/SobreNosotros';
 import ProductoDetalles from './pages/ProductoDetalles';
 import Contacto from './pages/Contacto';
 import Carrito from './pages/Carrito';
-import { useState } from 'react';
+import useCarrito from './logica/useCarrito';
 import './App.css';
 
 function App() {
-  const [carrito, setCarrito] = useState([]);
-  
-  const agregarAlCarrito = (producto) => {
-    setCarrito([...carrito, producto]);
-    alert("Agregado con éxito")//creo que todo esto hay que cambiarlo para que funcione bien el carrito
-  };
-
+  const { carrito, agregarAlCarrito } = useCarrito();
+ //PASE LA LOGICA A USE CARRITO.
   //useEffect(() => {
   //  document.title = `Carrito: ${cartCount}`
   //}, [cartCount])
 
   return (
     <BrowserRouter>
-      <Navbar carrito={carrito}/>
+      <Navbar carrito={carrito} />
       <Routes>
         <Route path="/" element={<Navigate to="/inicio" replace />} />
         <Route path="/inicio" element={<Home />} />
@@ -31,9 +26,9 @@ function App() {
           path="/catalogo"
           element={<Catalogo agregarAlCarrito={agregarAlCarrito} />}
         />
-        <Route 
-          path="/producto/:id" 
-          element={<ProductoDetalles agregarAlCarrito={agregarAlCarrito} />} 
+        <Route
+          path="/producto/:id"
+          element={<ProductoDetalles agregarAlCarrito={agregarAlCarrito} />}
         />
         <Route path="/sobre-nosotros" element={<SobreNosotros />} />
         <Route path="/contacto" element={<Contacto />} />
