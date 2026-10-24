@@ -7,6 +7,8 @@ import ProductoDetalles from './pages/ProductoDetalles';
 import Contacto from './pages/Contacto';
 import Carrito from './pages/Carrito';
 import useCarrito from './logica/useCarrito';
+import NotFound from './pages/NotFound';
+import Footer from './components/Footer';
 import './App.css';
 
 function App() {
@@ -36,7 +38,9 @@ function App() {
           path="/carrito"
           element={<Carrito carrito={carrito} />}
         />
+        <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

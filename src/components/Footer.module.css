@@ -1,0 +1,75 @@
+.footer {
+  background-color: #121212;
+  color: #e0e0e0;
+  padding-top: 3rem;
+  padding-bottom: 1.5rem;
+  margin-top: 4rem;
+  border-top: 1px solid #2a2a2a;
+}
+
+.brandTitle {
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.description {
+  color: #a0a0a0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.sectionTitle {
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 1rem;
+}
+
+.linkList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.linkList li {
+  margin-bottom: 0.6rem;
+}
+
+.footerLink {
+  color: #a0a0a0;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s ease-in-out;
+}
+
+.footerLink:hover {
+  color: #0d6efd;
+}
+
+.socialIcon {
+  color: #ffffff;
+  font-size: 1.25rem;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.socialIcon:hover {
+  opacity: 0.75;
+}
+
+.bottomBorder {
+  border-top: 1px solid #2a2a2a;
+}
+
+.copyright {
+  color: #808080;
+  font-size: 0.85rem;
+  margin-bottom: 0;
+}
+
+.paymentIcon {
+  color: #a0a0a0;
+  font-size: 1.8rem;
+}
