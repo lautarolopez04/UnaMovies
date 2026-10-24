@@ -11,15 +11,19 @@ import './App.css';
 
 function App() {
   const [carrito, setCarrito] = useState([]);
-
+  
   const agregarAlCarrito = (producto) => {
     setCarrito([...carrito, producto]);
+    alert("Agregado con éxito")//creo que todo esto hay que cambiarlo para que funcione bien el carrito
   };
+
+  //useEffect(() => {
+  //  document.title = `Carrito: ${cartCount}`
+  //}, [cartCount])
 
   return (
     <BrowserRouter>
-      <Navbar />
-      <p>Películas en el estado: {carrito.length}</p>
+      <Navbar carrito={carrito}/>
       <Routes>
         <Route path="/" element={<Navigate to="/inicio" replace />} />
         <Route path="/inicio" element={<Home />} />
@@ -27,7 +31,10 @@ function App() {
           path="/catalogo"
           element={<Catalogo agregarAlCarrito={agregarAlCarrito} />}
         />
-        <Route path="/producto/:id" element={<ProductoDetalles />} />
+        <Route 
+          path="/producto/:id" 
+          element={<ProductoDetalles agregarAlCarrito={agregarAlCarrito} />} 
+        />
         <Route path="/sobre-nosotros" element={<SobreNosotros />} />
         <Route path="/contacto" element={<Contacto />} />
         <Route

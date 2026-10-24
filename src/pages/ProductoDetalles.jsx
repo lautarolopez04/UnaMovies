@@ -1,11 +1,15 @@
-import React from 'react'
+import React, {useState} from 'react'
 import productos from "../data/productos"
 import { useParams, Link } from 'react-router-dom'
 import {Container, Row, Col, Button, Badge} from 'react-bootstrap'
 
-function ProductoDetalles() {
+function ProductoDetalles({agregarAlCarrito}) {
   const {id} = useParams();
-  const pelicula = productos.find((pelicula)=>pelicula.id == Number(id))
+  const pelicula = productos.find((pelicula)=>pelicula.id == Number(id))  
+  const [contador, setContador] = useState(1)
+
+  const incrementar = () => {if (contador < pelicula.stock) setContador(contador+1)}
+  const eliminar = () => {if (contador > 1) setContador(contador-1)}
 
   return (
     <Container className="py-5 text-light">
@@ -22,7 +26,17 @@ function ProductoDetalles() {
         <h3 className="text-danger fw-bold mb-3">${pelicula.precio}</h3>
         <p className="text-secondary mb-4">{pelicula.descripción}</p>
         <p className="mb-4"> <strong>Disponibles:</strong> {pelicula.stock}</p>       
-        <Button variant="danger">Agregar al carrito</Button>
+        
+        <div className="d-flex align-items-center gap-3">
+          <Button variant="danger" onClick= {() => agregarAlCarrito({...pelicula,contador})}>
+            Agregar al carrito
+          </Button>
+          <div className="d-flex align-items-center gap-2 border border-secondary rounded px-2 py-1 bg-dark">
+            <Button variant="light" onClick= {eliminar}>-</Button>
+            <span className="text-light fw-bold px-2">{contador}</span>
+            <Button variant="light" onClick= {incrementar}>+</Button>
+          </div>
+        </div>                  
       </Col>
       </Row>
     </Container>

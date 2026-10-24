@@ -3,11 +3,13 @@ import productos from '../data/productos';
 import { Card } from 'react-bootstrap';
 import { Row, Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { FiShoppingCart } from "react-icons/fi";
+import { MdMovieFilter } from "react-icons/md";
 
 const Catalogo = ({ agregarAlCarrito }) => {
   return (
     <div className="container text-light mt-5">
-      <h2 className="text-danger fw-bold mb-3">🎬 Catálogo de Películas</h2>
+      <h2 className="text-danger fw-bold mb-3"><MdMovieFilter /> Catálogo de Películas</h2>
       <p className="lead text-secondary">
 
       </p>
@@ -35,7 +37,7 @@ const Catalogo = ({ agregarAlCarrito }) => {
                     ? `Stock: ${producto.stock}`
                     : "Sin stock"}
                 </Card.Text>
-                <Link to={`/producto/${producto.id}`}>Ver detalle</Link>
+                <Button as={Link} to={`/producto/${producto.id}`}>Ver detalle</Button>               
                 <Button
                   variant="secondary"
                   size="sm"
@@ -46,7 +48,7 @@ const Catalogo = ({ agregarAlCarrito }) => {
                     agregarAlCarrito(producto);
                   }}
                 >
-                  🛒 Carrito
+                  <FiShoppingCart /> Carrito
                 </Button>
               </Card.Body>
             </Card>

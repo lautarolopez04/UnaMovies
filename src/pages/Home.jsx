@@ -20,16 +20,6 @@ const Home = () => {
     }
   };
 
-
-  //const novedadesPeliculas = [ 
-  //  { id: 1, title: "ESTRENO - Inception (Blu-Ray 4K)", price: "$15.000,00", image: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=400&auto=format&fit=crop" },
-  //  { id: 2, title: "ESTRENO - Interstellar (Edición Especial)", price: "$18.000,00", image: "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=400&auto=format&fit=crop" },
-  //  { id: 3, title: "CLÁSICO - Matrix (Remasterizada)", price: "$12.000,00", image: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=400&auto=format&fit=crop" },
-  //  { id: 4, title: "SCIFI - Blade Runner 2049", price: "$14.500,00", image: "https://seventhartstudio.com/wp-content/uploads/2020/10/Blade-Runner-2049.jpg"},
-  //  { id: 5, title: "ESTRENO - Dune: Parte Dos", price: "$19.000,00", image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=400&auto=format&fit=crop" },
-  //  { id: 6, title: "ACCIÓN - John Wick 4", price: "$13.000,00", image: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?q=80&w=400&auto=format&fit=crop" }
-  //];
-
   return (
     <div className="container py-5 text-light">
         <div className="text-center py-5 mb-5 border-bottom border-secondary">
