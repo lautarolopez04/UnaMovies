@@ -10,34 +10,50 @@ import './App.css';
 
 import useCarrito from './logica/useCarrito';
 
+import { Toast, ToastContainer, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+
 function App() {
-  
   const { 
     carrito, 
     agregarAlCarrito, 
     sumarCantidad, 
     restarCantidad, 
     eliminarProducto,
-    vaciarCarrito
+    vaciarCarrito,
+    mostrarToast,
+    setMostrarToast,
+    productoToast
   } = useCarrito();
 
   return (
     <BrowserRouter>
-      {/* Le pasamos la longitud del carrito al Navbar */}
-      <Navbar cantidadCarrito={carrito.length}/>
+      <Navbar carrito={carrito} />
       
+      <ToastContainer position="bottom-end" className="p-3" style={{ zIndex: 9999, position: 'fixed' }}>
+        <Toast show={mostrarToast} onClose={() => setMostrarToast(false)} bg="dark" delay={3000} autohide>
+          <Toast.Header className="bg-dark text-light border-secondary">
+            <strong className="me-auto text-success">¡Agregado con éxito!</strong>
+          </Toast.Header>
+          <Toast.Body className="text-light">
+            <p>Se agregó <b>{productoToast}</b> a tu compra.</p>
+            <Button as={Link} to="/carrito" variant="outline-danger" size="sm" onClick={() => setMostrarToast(false)}>
+              Ver carrito
+            </Button>
+          </Toast.Body>
+        </Toast>
+      </ToastContainer>
+
       <Routes>
         <Route path="/" element={<Navigate to="/inicio" replace />} />
         <Route path="/inicio" element={<Home />} />
         
-        {/* Pasamos agregarAlCarrito al Catálogo y a Detalles */}
         <Route path="/catalogo" element={<Catalogo agregarAlCarrito={agregarAlCarrito} />} />
         <Route path="/producto/:id" element={<ProductoDetalles agregarAlCarrito={agregarAlCarrito} />} />
         
         <Route path="/sobre-nosotros" element={<SobreNosotros />} />
         <Route path="/contacto" element={<Contacto vaciarCarrito={vaciarCarrito} carrito={carrito} />} />
         
-        {/* Pasamos el estado y las funciones modificadoras al Carrito */}
         <Route 
             path="/carrito" 
             element={
