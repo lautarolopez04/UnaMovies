@@ -28,7 +28,7 @@ function ProductoDetalles({agregarAlCarrito}) {
         <p className="mb-4"> <strong>Disponibles:</strong> {pelicula.stock}</p>       
         
         <div className="d-flex align-items-center gap-3">
-          <Button variant="danger" onClick= {() => agregarAlCarrito({...pelicula,contador})}>
+          <Button variant="danger" onClick={() => agregarAlCarrito({...pelicula, cantidadSeleccionada: contador})}>
             Agregar al carrito
           </Button>
           <div className="d-flex align-items-center gap-2 border border-secondary rounded px-2 py-1 bg-dark">

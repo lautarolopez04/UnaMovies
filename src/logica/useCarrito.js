@@ -1,38 +1,70 @@
 import { useState } from 'react';
-/*falta  ver que no se dupliquen y pulir mas cosas */
+
 function useCarrito() {
   const [carrito, setCarrito] = useState([]);
+  
+  // Estado para controlar el Toast flotante
+  const [mostrarToast, setMostrarToast] = useState(false);
+  const [productoToast, setProductoToast] = useState('');
 
   const agregarAlCarrito = (producto) => {
-    const existente = carrito.find(
-      pelicula => pelicula.id === producto.id
-    );
-/*lo que esta arriba estaba en APP. */
+    // Si viene desde ProductoDetalles trae cantidadSeleccionada, sino asumimos 1
+    const cantidadA_Agregar = producto.cantidadSeleccionada || 1;
+    
+    const existente = carrito.find(pelicula => pelicula.id === producto.id);
 
-/*este ternario es para ver si hay una peli del mismo y suma uno mas
-manteniendo el dato anerior, si no pone 1  */
-    const nuevaCantidad = existente
-      ? existente.cantidad + 1
-      : 1;
-/*mantiene lo de producto solo agregue una nueva propiedad */
-    const productoActualizado = {
-      ...producto,
-      cantidad: nuevaCantidad
-    };
-/*actualiza el carrito en caso que ya tuviera si no agrega
-su primer pelki */
-    const carritoActualizado = carrito.map((pelicula) =>
-      producto.id === pelicula.id
-        ? productoActualizado
-        : pelicula
-    );
+    let carritoActualizado;
+    if (existente) {
+      carritoActualizado = carrito.map(pelicula => 
+        pelicula.id === producto.id 
+          ? { ...pelicula, cantidad: pelicula.cantidad + cantidadA_Agregar }
+          : pelicula
+      );
+    } else {
+      carritoActualizado = [...carrito, { ...producto, cantidad: cantidadA_Agregar }];
+    }
 
-/*deje el mensaje que estaba en app */
-    setCarrito([...carrito, producto]);
-    alert("Agregado con éxito");
+    setCarrito(carritoActualizado);
+    
+    setProductoToast(producto.nombre);
+    setMostrarToast(true);
+    setTimeout(() => setMostrarToast(false), 3000);
   };
 
-  return { carrito, agregarAlCarrito };
+  const sumarCantidad = (id) => {
+      const nuevoCarrito = carrito.map(item => 
+          item.id === id ? { ...item, cantidad: item.cantidad + 1 } : item
+      );
+      setCarrito(nuevoCarrito);
+  };
+
+  const restarCantidad = (id) => {
+      const nuevoCarrito = carrito.map(item => 
+          item.id === id && item.cantidad > 1 ? { ...item, cantidad: item.cantidad - 1 } : item
+      );
+      setCarrito(nuevoCarrito);
+  };
+
+  const eliminarProducto = (id) => {
+      const nuevoCarrito = carrito.filter(item => item.id !== id);
+      setCarrito(nuevoCarrito);
+  };
+
+  const vaciarCarrito = () => {
+      setCarrito([]);
+  }
+
+  return { 
+      carrito, 
+      agregarAlCarrito, 
+      sumarCantidad, 
+      restarCantidad, 
+      eliminarProducto, 
+      vaciarCarrito,
+      mostrarToast,
+      setMostrarToast,
+      productoToast
+  };
 }
 
 export default useCarrito;
