@@ -6,41 +6,50 @@ import SobreNosotros from './pages/SobreNosotros';
 import ProductoDetalles from './pages/ProductoDetalles';
 import Contacto from './pages/Contacto';
 import Carrito from './pages/Carrito';
-import useCarrito from './logica/useCarrito';
-import NotFound from './pages/NotFound';
-import Footer from './components/Footer';
 import './App.css';
 
+import useCarrito from './logica/useCarrito';
+
 function App() {
-  const { carrito, agregarAlCarrito } = useCarrito();
- //PASE LA LOGICA A USE CARRITO.
-  //useEffect(() => {
-  //  document.title = `Carrito: ${cartCount}`
-  //}, [cartCount])
+  
+  const { 
+    carrito, 
+    agregarAlCarrito, 
+    sumarCantidad, 
+    restarCantidad, 
+    eliminarProducto,
+    vaciarCarrito
+  } = useCarrito();
 
   return (
     <BrowserRouter>
-      <Navbar carrito={carrito} />
+      {/* Le pasamos la longitud del carrito al Navbar */}
+      <Navbar cantidadCarrito={carrito.length}/>
+      
       <Routes>
         <Route path="/" element={<Navigate to="/inicio" replace />} />
         <Route path="/inicio" element={<Home />} />
-        <Route
-          path="/catalogo"
-          element={<Catalogo agregarAlCarrito={agregarAlCarrito} />}
-        />
-        <Route
-          path="/producto/:id"
-          element={<ProductoDetalles agregarAlCarrito={agregarAlCarrito} />}
-        />
+        
+        {/* Pasamos agregarAlCarrito al Catálogo y a Detalles */}
+        <Route path="/catalogo" element={<Catalogo agregarAlCarrito={agregarAlCarrito} />} />
+        <Route path="/producto/:id" element={<ProductoDetalles agregarAlCarrito={agregarAlCarrito} />} />
+        
         <Route path="/sobre-nosotros" element={<SobreNosotros />} />
-        <Route path="/contacto" element={<Contacto />} />
-        <Route
-          path="/carrito"
-          element={<Carrito carrito={carrito} />}
+        <Route path="/contacto" element={<Contacto vaciarCarrito={vaciarCarrito} carrito={carrito} />} />
+        
+        {/* Pasamos el estado y las funciones modificadoras al Carrito */}
+        <Route 
+            path="/carrito" 
+            element={
+                <Carrito 
+                    carrito={carrito}
+                    sumarCantidad={sumarCantidad}
+                    restarCantidad={restarCantidad}
+                    eliminarProducto={eliminarProducto}
+                />
+            }
         />
-        <Route path="*" element={<NotFound />} />
       </Routes>
-      <Footer />
     </BrowserRouter>
   );
 }

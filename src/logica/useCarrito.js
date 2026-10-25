@@ -21,18 +21,51 @@ manteniendo el dato anerior, si no pone 1  */
     };
 /*actualiza el carrito en caso que ya tuviera si no agrega
 su primer pelki */
-    const carritoActualizado = carrito.map((pelicula) =>
-      producto.id === pelicula.id
-        ? productoActualizado
-        : pelicula
-    );
+    
+    // CORRECCIÓN: Si existe, mapeamos el array. Si no, le agregamos el productoActualizado al final.
+    const carritoActualizado = existente 
+        ? carrito.map((pelicula) => producto.id === pelicula.id ? productoActualizado : pelicula)
+        : [...carrito, productoActualizado];
 
 /*deje el mensaje que estaba en app */
-    setCarrito([...carrito, producto]);
+    setCarrito(carritoActualizado);
     alert("Agregado con éxito");
   };
 
-  return { carrito, agregarAlCarrito };
+  // FUNCIONES AGREGADAS
+
+  const sumarCantidad = (id) => {
+      const nuevoCarrito = carrito.map(item => 
+          item.id === id ? { ...item, cantidad: item.cantidad + 1 } : item
+      );
+      setCarrito(nuevoCarrito);
+  };
+
+  const restarCantidad = (id) => {
+      const nuevoCarrito = carrito.map(item => 
+          item.id === id && item.cantidad > 1 ? { ...item, cantidad: item.cantidad - 1 } : item
+      );
+      setCarrito(nuevoCarrito);
+  };
+
+  const eliminarProducto = (id) => {
+      const nuevoCarrito = carrito.filter(item => item.id !== id);
+      setCarrito(nuevoCarrito);
+  };
+
+  const vaciarCarrito = () => {
+      setCarrito([]);
+  }
+
+  // Exportamos todas las funciones para que App.jsx pueda consumirlas
+  return { 
+      carrito, 
+      agregarAlCarrito, 
+      sumarCantidad, 
+      restarCantidad, 
+      eliminarProducto, 
+      vaciarCarrito 
+  };
 }
 
 export default useCarrito;
