@@ -1,15 +1,23 @@
 import { NavLink } from 'react-router-dom';
 import { FiShoppingCart } from "react-icons/fi";
-
+import logo from '../assets/logo.png';
 const Navbar = ({ carrito = [] }) => {
-  return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-4 shadow-sm sticky-top">
-      <div className="container-fluid">
-        <NavLink to="/inicio" className="navbar-brand fw-bold" style={{ color: '#0c2eec',         
-    WebkitTextStroke: '1px white', textStroke: '1px white'} }>
-  🎬 UnaMovies
-        </NavLink>
 
+    return (
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-4 shadow-sm sticky-top py-2">
+      <div className="container-fluid">
+        <NavLink to="/inicio" className="navbar-brand d-flex align-items-center p-0">
+          <img 
+            src={logo} 
+            alt="UnaMovies Logo"
+        style={{ 
+          height: '115px', 
+          width: 'auto', 
+          objectFit: 'contain',
+          marginTop: '6px'
+            }} 
+          />
+        </NavLink>
         <div className="navbar-nav ms-auto flex-row gap-3">
           <NavLink to="/inicio" className="nav-link text-light">Inicio</NavLink>
           <NavLink to="/catalogo" className="nav-link text-light">Catálogo</NavLink>
