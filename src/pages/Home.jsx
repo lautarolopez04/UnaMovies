@@ -67,7 +67,7 @@ const Home = () => {
                       {pelicula.nombre}
                     </p>
                     <p className="fw-bold fs-5 text-light mb-3">
-                      {pelicula.precio}
+                      ${pelicula.precio}
                     </p>
 
                     <Link to={`/producto/${pelicula.id}`} className="btn btn-outline-light btn-sm fw-bold">
