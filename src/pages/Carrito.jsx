@@ -52,7 +52,7 @@ function Carrito({ carrito = [], sumarCantidad, restarCantidad, eliminarProducto
           </Col>
 
           <Col md={4}>
-             <Card className="bg-dark text-light border-secondary">
+            <Card className="bg-dark text-light border-secondary">
                 <Card.Body>
                     <Card.Title className="mb-4 text-center border-bottom border-secondary pb-2">RESUMEN DE LA COMPRA</Card.Title>
                     <div className="d-flex justify-content-between mb-2">
@@ -67,7 +67,7 @@ function Carrito({ carrito = [], sumarCantidad, restarCantidad, eliminarProducto
                         Finalizar Compra
                     </Button>
                 </Card.Body>
-             </Card>
+            </Card>
           </Col>
         </Row>
       )}
