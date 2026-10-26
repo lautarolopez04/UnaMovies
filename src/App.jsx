@@ -7,7 +7,7 @@ import ProductoDetalles from './pages/ProductoDetalles';
 import Contacto from './pages/Contacto';
 import Carrito from './pages/Carrito';
 import './App.css';
-
+import Footer from './components/Footer';
 import useCarrito from './logica/useCarrito';
 
 import { Toast, ToastContainer, Button } from 'react-bootstrap';
@@ -66,6 +66,7 @@ function App() {
             }
         />
       </Routes>
+      <Footer/>
     </BrowserRouter>
   );
 }
