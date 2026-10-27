@@ -17,7 +17,6 @@ const Catalogo = ({ agregarAlCarrito }) => {
       <div className="d-flex flex-column align-items-center mb-4">
         <h2 className="text-danger fw-bold mb-3"><MdMovieFilter /> Catálogo de Películas</h2>
         
-        {/* Barra de búsqueda con botón de acción lateral para mejor UI/UX */}
         <div className="d-flex w-50">
           <Form.Control
             type="text"
