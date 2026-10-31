@@ -30,7 +30,7 @@ function Footer() {
           <Col lg={4} md={6}>
             <h5 className={styles.brandTitle}>UNAMOVIES</h5>
             <p className={styles.description}>
-              Tu plataforma y tienda favorita para encontrar las mejores películas, coleccionables y merchandising.
+              Tu plataforma y tienda favorita para encontrar las mejores películas.
             </p>
             
           </Col>

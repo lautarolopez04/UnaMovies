@@ -23,31 +23,47 @@ function Carrito({ carrito = [], sumarCantidad, restarCantidad, eliminarProducto
       ) : (
         <Row>
           <Col md={8}>
-            {carrito.map((producto) => (
-              <div key={producto.id} className="bg-dark p-3 mb-3 rounded border border-secondary d-flex flex-column flex-md-row align-items-center justify-content-between text-light">
-                <div className="d-flex align-items-center mb-3 mb-md-0">
-                    <img src={producto.imagen} alt={producto.nombre} className="rounded shadow-sm me-3" style={{ width: "80px", height: "120px", objectFit: "cover" }} />
-                    <div>
-                    <h5 className="mb-1 fw-bold">{producto.nombre}</h5>
-                    <p className="mb-0 text-secondary">Precio unitario: ${producto.precio}</p>
-                    <p className="mb-0 fw-bold text-danger mt-1">Subtotal: ${producto.precio * producto.cantidad}</p>
-                    </div>
-                </div>
+            {carrito.map((producto) => {
+              // Verificamos si la cantidad en el carrito alcanzó el límite de stock
+              const alcanzoLimite = producto.cantidad >= producto.stock;
 
-                <div className="d-flex align-items-center gap-3">
-                  <div className="d-flex align-items-center gap-2 border border-secondary rounded px-2 py-1 bg-dark">
-                    <Button variant="outline-light" size="sm" onClick={() => restarCantidad(producto.id)}>-</Button>
-                    <span className="text-light fw-bold px-2">
-                      {producto.cantidad}
-                    </span>
-                    <Button variant="outline-light" size="sm" onClick={() => sumarCantidad(producto.id)}>+</Button>
+              return (
+                <div key={producto.id} className="bg-dark p-3 mb-3 rounded border border-secondary d-flex flex-column flex-md-row align-items-center justify-content-between text-light">
+                  <div className="d-flex align-items-center mb-3 mb-md-0">
+                      <img src={producto.imagen} alt={producto.nombre} className="rounded shadow-sm me-3" style={{ width: "80px", height: "120px", objectFit: "cover" }} />
+                      <div>
+                        <h5 className="mb-1 fw-bold">{producto.nombre}</h5>
+                        <p className="mb-0 text-secondary">Precio unitario: ${producto.precio}</p>
+                        <p className="mb-0 fw-bold text-danger mt-1">Subtotal: ${producto.precio * producto.cantidad}</p>
+                        {alcanzoLimite && (
+                          <small className="text-warning d-block mt-1">Llegaste al límite de stock ({producto.stock} disponibles)</small>
+                        )}
+                      </div>
                   </div>
-                  <Button variant="outline-danger" size="sm" onClick={() => eliminarProducto(producto.id)}>
-                      <FiTrash2 />
-                  </Button>
+
+                  <div className="d-flex align-items-center gap-3">
+                    <div className="d-flex align-items-center gap-2 border border-secondary rounded px-2 py-1 bg-dark">
+                      <Button variant="outline-light" size="sm" onClick={() => restarCantidad(producto.id)}>-</Button>
+                      <span className="text-light fw-bold px-2">
+                        {producto.cantidad}
+                      </span>
+                      {/* Deshabilitamos el botón + si llegó al stock máximo */}
+                      <Button 
+                        variant="outline-light" 
+                        size="sm" 
+                        disabled={alcanzoLimite}
+                        onClick={() => sumarCantidad(producto.id)}
+                      >
+                        +
+                      </Button>
+                    </div>
+                    <Button variant="outline-danger" size="sm" onClick={() => eliminarProducto(producto.id)}>
+                        <FiTrash2 />
+                    </Button>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
             <Button variant="outline-secondary" as={Link} to="/catalogo" className="mt-2">Agregar más productos</Button>
           </Col>
 

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { FiShoppingCart } from "react-icons/fi";
 import { MdMovieFilter } from "react-icons/md";
 
-const Catalogo = ({ agregarAlCarrito }) => {
+const Catalogo = ({ agregarAlCarrito, carrito = [] }) => {
   const [busqueda, setBusqueda] = useState('');
   
   const productosFiltrados = productos.filter(producto => 
@@ -36,41 +36,54 @@ const Catalogo = ({ agregarAlCarrito }) => {
 
       <Row className="g-4">
         {productosFiltrados.length > 0 ? (
-          productosFiltrados.map((producto) => (
-            <Col key={producto.id} xs={12} md={6} lg={4}>
-              <Card className="h-100 bg-dark text-light rounded-4 p-3 shadow">
-                <img
-                  className="img-fluid w-100"
-                  src={producto.imagen}
-                  alt={producto.nombre}
-                  style={{
-                    height: "200px",
-                    objectFit: "cover"
-                  }}
-                />
-                <Card.Body>
-                  <Card.Title>{producto.nombre}</Card.Title>
-                  <Card.Text>Precio: ${producto.precio}</Card.Text>
-                  <Card.Text>Categoria: {producto.categoria}</Card.Text>
-                  <Card.Text>
-                    {producto.stock > 0
-                      ? `Stock: ${producto.stock}`
-                      : "Sin stock"}
-                  </Card.Text>
-                  <Button as={Link} to={`/producto/${producto.id}`} variant="outline-light">Ver detalle</Button>               
-                  <Button
-                    variant="danger"
-                    size="sm"
-                    className="ms-2"
-                    disabled={producto.stock === 0}
-                    onClick={() => agregarAlCarrito(producto)}
-                  >
-                    <FiShoppingCart /> {producto.stock > 0 ? 'Agregar' : 'Agotado'}
-                  </Button>
-                </Card.Body>
-              </Card>
-            </Col>
-          ))
+          productosFiltrados.map((producto) => {
+            // MOVIDO ACÁ: Los cálculos deben ir adentro del .map() para cada producto individual
+            const itemEnCarrito = carrito.find(item => item.id === producto.id);
+            const cantidadEnCarrito = itemEnCarrito ? itemEnCarrito.cantidad : 0;
+            const stockDisponible = producto.stock - cantidadEnCarrito;
+            const sinStock = stockDisponible <= 0;
+
+            return (
+              <Col key={producto.id} xs={12} md={6} lg={4}>
+                <Card className="h-100 bg-dark text-light rounded-4 p-3 shadow">
+                  <img
+                    className="img-fluid w-100"
+                    src={producto.imagen}
+                    alt={producto.nombre}
+                    style={{
+                      height: "200px",
+                      objectFit: "cover"
+                    }}
+                  />
+                  <Card.Body>
+                    <Card.Title>{producto.nombre}</Card.Title>
+                    <Card.Text>Precio: ${producto.precio}</Card.Text>
+                    <Card.Text>Categoría: {producto.categoria}</Card.Text>
+                    
+                    {/* Stock dinámico restando la cantidad en carrito */}
+                    <Card.Text className={sinStock ? "text-danger fw-bold" : ""}>
+                      {!sinStock ? `Stock: ${stockDisponible}` : "Sin stock"}
+                    </Card.Text>
+
+                    <Button as={Link} to={`/producto/${producto.id}`} variant="outline-light">
+                      Ver detalle
+                    </Button>               
+                    
+                    {/* Botón dinámico según el stockDisponible */}
+                    <Button
+                      variant={sinStock ? "secondary" : "danger"}
+                      size="sm"
+                      className="ms-2"
+                      disabled={sinStock}
+                      onClick={() => agregarAlCarrito(producto)}
+                    >
+                      <FiShoppingCart /> {sinStock ? 'Sin stock' : 'Agregar'}
+                    </Button>
+                  </Card.Body>
+                </Card>
+              </Col>
+            );
+          })
         ) : (
           <Col xs={12} className="text-center mt-5">
             <h4 className="text-secondary">No encontramos películas con ese nombre.</h4>

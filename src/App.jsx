@@ -29,9 +29,9 @@ function App() {
 
   return (
     <BrowserRouter>
-     
+     <div className="d-flex flex-column min-vh-100">
       <Navbar carrito={carrito} cantidadTotal={cantidadTotalItems} />
-      
+      <main className="flex-grow-1">
       <ToastContainer position="bottom-end" className="p-3" style={{ zIndex: 9999, position: 'fixed' }}>
         <Toast show={mostrarToast} onClose={() => setMostrarToast(false)} bg="dark" delay={3000} autohide>
           <Toast.Header className="bg-dark text-light border-secondary">
@@ -50,7 +50,7 @@ function App() {
         <Route path="/" element={<Navigate to="/inicio" replace />} />
         <Route path="/inicio" element={<Home />} />
         
-        <Route path="/catalogo" element={<Catalogo agregarAlCarrito={agregarAlCarrito} />} />
+        <Route path="/catalogo" element={<Catalogo agregarAlCarrito={agregarAlCarrito} carrito={carrito} />} />
         <Route path="/producto/:id" element={<ProductoDetalles agregarAlCarrito={agregarAlCarrito} />} />
         
         <Route path="/sobre-nosotros" element={<SobreNosotros />} />
@@ -68,7 +68,9 @@ function App() {
             }
         />
       </Routes>
+      </main>
       <Footer/>
+      </div>
     </BrowserRouter>
   );
 }
