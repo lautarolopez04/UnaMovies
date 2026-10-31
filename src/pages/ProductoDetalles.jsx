@@ -30,7 +30,7 @@ function ProductoDetalles({ agregarAlCarrito }) {
           
           
           <p className="mb-4">
-            <strong>Disponibles:</strong> {pelicula.stock > 0 ? pelicula.stock : <span className="text-danger"> Sin stock / No disponible</span>}
+            <strong>Disponibles:</strong> {pelicula.stock > 0 ? pelicula.stock : <span className="text-danger"> Sin stock </span>}
           </p>      
           
           <div className="d-flex align-items-center gap-3">
