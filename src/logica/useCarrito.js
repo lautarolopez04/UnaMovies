@@ -2,15 +2,11 @@ import { useState } from 'react';
 
 function useCarrito() {
   const [carrito, setCarrito] = useState([]);
-  
-  // Estado para controlar el Toast flotante
   const [mostrarToast, setMostrarToast] = useState(false);
   const [productoToast, setProductoToast] = useState('');
 
   const agregarAlCarrito = (producto) => {
-    // Si viene desde ProductoDetalles trae cantidadSeleccionada, sino asumimos 1
-    const cantidadA_Agregar = producto.cantidadSeleccionada || 1;
-    
+    const cantidadA_Agregar = producto.cantidad || 1;
     const existente = carrito.find(pelicula => pelicula.id === producto.id);
 
     let carritoActualizado;
@@ -25,7 +21,6 @@ function useCarrito() {
     }
 
     setCarrito(carritoActualizado);
-    
     setProductoToast(producto.nombre);
     setMostrarToast(true);
     setTimeout(() => setMostrarToast(false), 3000);
@@ -54,6 +49,9 @@ function useCarrito() {
       setCarrito([]);
   }
 
+ 
+  const cantidadTotalItems = carrito.reduce((acum, item) => acum + item.cantidad, 0);
+
   return { 
       carrito, 
       agregarAlCarrito, 
@@ -63,7 +61,8 @@ function useCarrito() {
       vaciarCarrito,
       mostrarToast,
       setMostrarToast,
-      productoToast
+      productoToast,
+      cantidadTotalItems
   };
 }
 

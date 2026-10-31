@@ -23,12 +23,14 @@ function App() {
     vaciarCarrito,
     mostrarToast,
     setMostrarToast,
-    productoToast
+    productoToast,
+    cantidadTotalItems 
   } = useCarrito();
 
   return (
     <BrowserRouter>
-      <Navbar carrito={carrito} />
+     
+      <Navbar carrito={carrito} cantidadTotal={cantidadTotalItems} />
       
       <ToastContainer position="bottom-end" className="p-3" style={{ zIndex: 9999, position: 'fixed' }}>
         <Toast show={mostrarToast} onClose={() => setMostrarToast(false)} bg="dark" delay={3000} autohide>
