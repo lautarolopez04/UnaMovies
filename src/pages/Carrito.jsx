@@ -16,7 +16,7 @@ function Carrito({ carrito = [], sumarCantidad, restarCantidad, eliminarProducto
       {carrito.length === 0 ? (
         <div className="text-center mt-5">
           <Alert variant="dark" className="border border-secondary text-light bg-dark">
-            <CiCircleAlert size={24} className="me-2"/> El carrito de compras está vacío.
+            <CiCircleAlert size={24} className="me-2" /> El carrito de compras está vacío.
           </Alert>
           <Button variant="danger" as={Link} to="/catalogo" className="mt-3">Ir al catálogo</Button>
         </div>
@@ -24,21 +24,20 @@ function Carrito({ carrito = [], sumarCantidad, restarCantidad, eliminarProducto
         <Row>
           <Col md={8}>
             {carrito.map((producto) => {
-              // Verificamos si la cantidad en el carrito alcanzó el límite de stock
               const alcanzoLimite = producto.cantidad >= producto.stock;
 
               return (
                 <div key={producto.id} className="bg-dark p-3 mb-3 rounded border border-secondary d-flex flex-column flex-md-row align-items-center justify-content-between text-light">
                   <div className="d-flex align-items-center mb-3 mb-md-0">
-                      <img src={producto.imagen} alt={producto.nombre} className="rounded shadow-sm me-3" style={{ width: "80px", height: "120px", objectFit: "cover" }} />
-                      <div>
-                        <h5 className="mb-1 fw-bold">{producto.nombre}</h5>
-                        <p className="mb-0 text-secondary">Precio unitario: ${producto.precio}</p>
-                        <p className="mb-0 fw-bold text-danger mt-1">Subtotal: ${producto.precio * producto.cantidad}</p>
-                        {alcanzoLimite && (
-                          <small className="text-warning d-block mt-1">Llegaste al límite de stock ({producto.stock} disponibles)</small>
-                        )}
-                      </div>
+                    <img src={producto.imagen} alt={producto.nombre} className="rounded shadow-sm me-3" style={{ width: "80px", height: "120px", objectFit: "cover" }} />
+                    <div>
+                      <h5 className="mb-1 fw-bold">{producto.nombre}</h5>
+                      <p className="mb-0 text-secondary">Precio unitario: ${producto.precio}</p>
+                      <p className="mb-0 fw-bold text-danger mt-1">Subtotal: ${producto.precio * producto.cantidad}</p>
+                      {alcanzoLimite && (
+                        <small className="text-warning d-block mt-1">Llegaste al límite de stock ({producto.stock} disponibles)</small>
+                      )}
+                    </div>
                   </div>
 
                   <div className="d-flex align-items-center gap-3">
@@ -47,10 +46,10 @@ function Carrito({ carrito = [], sumarCantidad, restarCantidad, eliminarProducto
                       <span className="text-light fw-bold px-2">
                         {producto.cantidad}
                       </span>
-                      {/* Deshabilitamos el botón + si llegó al stock máximo */}
-                      <Button 
-                        variant="outline-light" 
-                        size="sm" 
+
+                      <Button
+                        variant="outline-light"
+                        size="sm"
                         disabled={alcanzoLimite}
                         onClick={() => sumarCantidad(producto.id)}
                       >
@@ -58,7 +57,7 @@ function Carrito({ carrito = [], sumarCantidad, restarCantidad, eliminarProducto
                       </Button>
                     </div>
                     <Button variant="outline-danger" size="sm" onClick={() => eliminarProducto(producto.id)}>
-                        <FiTrash2 />
+                      <FiTrash2 />
                     </Button>
                   </div>
                 </div>
@@ -69,20 +68,20 @@ function Carrito({ carrito = [], sumarCantidad, restarCantidad, eliminarProducto
 
           <Col md={4}>
             <Card className="bg-dark text-light border-secondary">
-                <Card.Body>
-                    <Card.Title className="mb-4 text-center border-bottom border-secondary pb-2">RESUMEN DE LA COMPRA</Card.Title>
-                    <div className="d-flex justify-content-between mb-2">
-                        <span>Cantidad de productos:</span>
-                        <span className="fw-bold">{cantidadTotal}</span>
-                    </div>
-                    <div className="d-flex justify-content-between mb-4 fs-5 text-danger">
-                        <span>Total a pagar:</span>
-                        <span className="fw-bold">${totalGeneral}</span>
-                    </div>
-                    <Button variant="danger" className="w-100" as={Link} to="/contacto">
-                        Finalizar Compra
-                    </Button>
-                </Card.Body>
+              <Card.Body>
+                <Card.Title className="mb-4 text-center border-bottom border-secondary pb-2">RESUMEN DE LA COMPRA</Card.Title>
+                <div className="d-flex justify-content-between mb-2">
+                  <span>Cantidad de productos:</span>
+                  <span className="fw-bold">{cantidadTotal}</span>
+                </div>
+                <div className="d-flex justify-content-between mb-4 fs-5 text-danger">
+                  <span>Total a pagar:</span>
+                  <span className="fw-bold">${totalGeneral}</span>
+                </div>
+                <Button variant="danger" className="w-100" as={Link} to="/contacto">
+                  Finalizar Compra
+                </Button>
+              </Card.Body>
             </Card>
           </Col>
         </Row>

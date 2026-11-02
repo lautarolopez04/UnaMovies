@@ -9,15 +9,15 @@ function useCarrito() {
   const cantidadA_Agregar = producto.cantidad || 1;
   const existente = carrito.find(pelicula => pelicula.id === producto.id);
 
-  // 1. Calculamos cuánto tiene sumado actualmente en el carrito
+  
   const cantidadActualEnCarrito = existente ? existente.cantidad : 0;
 
-  // 2. VALIDACIÓN: Si la suma supera el stock disponible, frenamos la ejecución
+ 
   if (cantidadActualEnCarrito + cantidadA_Agregar > producto.stock) {
-    return; // Sale de la función sin actualizar el carrito ni mostrar el Toast
+    return; 
   }
 
-  // --- Tu código original queda exactamente igual hacia abajo ---
+ 
   let carritoActualizado;
   if (existente) {
     carritoActualizado = carrito.map(pelicula => 
@@ -39,7 +39,7 @@ function useCarrito() {
   setCarrito((prevCarrito) =>
     prevCarrito.map((item) => {
       if (item.id === id) {
-        // Si al sumar 1 supera su stock total, mantiene la cantidad actual
+        
         if (item.cantidad + 1 > item.stock) {
           return item;
         }
