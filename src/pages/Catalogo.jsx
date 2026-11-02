@@ -67,8 +67,8 @@ const Catalogo = ({ agregarAlCarrito }) => {
               className="bg-dark text-light border-secondary shadow-none"
             >
               <option value="">Ordenar por precio...</option>
-              <option value="asc">Precio: Menor a mayor</option>
-              <option value="desc">Precio: Mayor a menor</option>
+              <option value="asc"> Menor a mayor</option>
+              <option value="desc">  Mayor a menor</option>
             </Form.Select>
           </Col>
         </Row>
