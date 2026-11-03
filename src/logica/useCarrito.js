@@ -1,85 +1,88 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 function useCarrito() {
   const [carrito, setCarrito] = useState([]);
   const [mostrarToast, setMostrarToast] = useState(false);
-  const [productoToast, setProductoToast] = useState('');
+  const [productoToast, setProductoToast] = useState("");
 
   const agregarAlCarrito = (producto) => {
-  const cantidadA_Agregar = producto.cantidad || 1;
-  const existente = carrito.find(pelicula => pelicula.id === producto.id);
+    const cantidadA_Agregar = producto.cantidad || 1;
+    const existente = carrito.find((pelicula) => pelicula.id === producto.id);
 
-  
-  const cantidadActualEnCarrito = existente ? existente.cantidad : 0;
+    const cantidadActualEnCarrito = existente ? existente.cantidad : 0;
 
- 
-  if (cantidadActualEnCarrito + cantidadA_Agregar > producto.stock) {
-    return; 
-  }
+    if (cantidadActualEnCarrito + cantidadA_Agregar > producto.stock) {
+      return;
+    }
 
- 
-  let carritoActualizado;
-  if (existente) {
-    carritoActualizado = carrito.map(pelicula => 
-      pelicula.id === producto.id 
-        ? { ...pelicula, cantidad: pelicula.cantidad + cantidadA_Agregar }
-        : pelicula
-    );
-  } else {
-    carritoActualizado = [...carrito, { ...producto, cantidad: cantidadA_Agregar }];
-  }
+    let carritoActualizado;
+    if (existente) {
+      carritoActualizado = carrito.map((pelicula) =>
+        pelicula.id === producto.id
+          ? { ...pelicula, cantidad: pelicula.cantidad + cantidadA_Agregar }
+          : pelicula,
+      );
+    } else {
+      carritoActualizado = [
+        ...carrito,
+        { ...producto, cantidad: cantidadA_Agregar },
+      ];
+    }
 
-  setCarrito(carritoActualizado);
-  setProductoToast(producto.nombre);
-  setMostrarToast(true);
-  setTimeout(() => setMostrarToast(false), 3000);
-};
+    setCarrito(carritoActualizado);
+    setProductoToast(producto.nombre);
+    setMostrarToast(true);
+    setTimeout(() => setMostrarToast(false), 3000);
+  };
 
   const sumarCantidad = (id) => {
-  setCarrito((prevCarrito) =>
-    prevCarrito.map((item) => {
-      if (item.id === id) {
-        
-        if (item.cantidad + 1 > item.stock) {
-          return item;
+    setCarrito((prevCarrito) =>
+      prevCarrito.map((item) => {
+        if (item.id === id) {
+          if (item.cantidad + 1 > item.stock) {
+            return item;
+          }
+          return { ...item, cantidad: item.cantidad + 1 };
         }
-        return { ...item, cantidad: item.cantidad + 1 };
-      }
-      return item;
-    })
-  );
-};
+        return item;
+      }),
+    );
+  };
 
   const restarCantidad = (id) => {
-      const nuevoCarrito = carrito.map(item => 
-          item.id === id && item.cantidad > 1 ? { ...item, cantidad: item.cantidad - 1 } : item
-      );
-      setCarrito(nuevoCarrito);
+    const nuevoCarrito = carrito.map((item) =>
+      item.id === id && item.cantidad > 1
+        ? { ...item, cantidad: item.cantidad - 1 }
+        : item,
+    );
+    setCarrito(nuevoCarrito);
   };
 
   const eliminarProducto = (id) => {
-      const nuevoCarrito = carrito.filter(item => item.id !== id);
-      setCarrito(nuevoCarrito);
+    const nuevoCarrito = carrito.filter((item) => item.id !== id);
+    setCarrito(nuevoCarrito);
   };
 
   const vaciarCarrito = () => {
-      setCarrito([]);
-  }
+    setCarrito([]);
+  };
 
- 
-  const cantidadTotalItems = carrito.reduce((acum, item) => acum + item.cantidad, 0);
+  const cantidadTotalItems = carrito.reduce(
+    (acum, item) => acum + item.cantidad,
+    0,
+  );
 
-  return { 
-      carrito, 
-      agregarAlCarrito, 
-      sumarCantidad, 
-      restarCantidad, 
-      eliminarProducto, 
-      vaciarCarrito,
-      mostrarToast,
-      setMostrarToast,
-      productoToast,
-      cantidadTotalItems
+  return {
+    carrito,
+    agregarAlCarrito,
+    sumarCantidad,
+    restarCantidad,
+    eliminarProducto,
+    vaciarCarrito,
+    mostrarToast,
+    setMostrarToast,
+    productoToast,
+    cantidadTotalItems,
   };
 }
 

@@ -1,7 +1,6 @@
-import React from 'react'
 import {useState} from "react"
 
-function Contacto({carrito}) {
+function Contacto({ carrito }) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",

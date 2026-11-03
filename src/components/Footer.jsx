@@ -1,10 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { 
-  FaFacebookF, 
-  FaInstagram, 
-  FaTwitter, 
   FaCcVisa, 
   FaCcMastercard, 
   FaCcPaypal 
@@ -26,16 +23,13 @@ function Footer() {
     <footer className={styles.footer}>
       <Container>
         <Row className="gy-4">
-          {/* Columna 1: Info de la marca y Redes */}
           <Col lg={4} md={6}>
             <h5 className={styles.brandTitle}>UNAMOVIES</h5>
             <p className={styles.description}>
               Tu plataforma y tienda favorita para encontrar las mejores películas.
-            </p>
-            
+            </p>            
           </Col>
 
-          {/* Columna 2: Navegación Principal */}
           <Col lg={2} md={6} sm={6}>
             <h6 className={styles.sectionTitle}>Navegación</h6>
             <ul className={styles.linkList}>
@@ -54,7 +48,6 @@ function Footer() {
             </ul>
           </Col>
 
-          {/* Columna 3: Accesos de Compra */}
           <Col lg={2} md={6} sm={6}>
             <h6 className={styles.sectionTitle}>Compras</h6>
             <ul className={styles.linkList}>
@@ -67,7 +60,6 @@ function Footer() {
             </ul>
           </Col>
 
-          {/* Columna 4: Newsletter */}
           <Col lg={4} md={6}>
             <h6 className={styles.sectionTitle}>Novedades</h6>
             <p className={styles.description}>
@@ -91,7 +83,6 @@ function Footer() {
           </Col>
         </Row>
 
-        {/* Barra Inferior: Copyright y Métodos de Pago */}
         <Row className={`mt-4 pt-3 ${styles.bottomBorder} align-items-center`}>
           <Col md={6} className="text-center text-md-start mb-2 mb-md-0">
             <p className={styles.copyright}>

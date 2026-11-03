@@ -1,17 +1,15 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import productos from '../data/productos';
 import { Card, Row, Col, Button, Form, InputGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FiShoppingCart, FiSearch } from "react-icons/fi";
 
-const Catalogo = ({ agregarAlCarrito }) => {
+function Catalogo({ agregarAlCarrito }) {
   const [busqueda, setBusqueda] = useState('');
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('');
   const [ordenPrecio, setOrdenPrecio] = useState('');
 
-
   const categorias = [...new Set(productos.map(p => p.categoria))];
-
 
   const productosFiltrados = productos.filter(producto => {
     const coincideNombre = producto.nombre.toLowerCase().includes(busqueda.toLowerCase());

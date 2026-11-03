@@ -1,8 +1,7 @@
-import React from 'react';
 import banner from '../assets/banner.avif';
 import { Link } from 'react-router-dom';
 
-const Banner = () => {
+function Banner() {
     return (
         <div className="p-5 mb-4 bg-dark text-white rounded-3 shadow-lg"
             style={{
@@ -13,7 +12,6 @@ const Banner = () => {
                 display: 'flex',
                 alignItems: 'center'
             }}>
-
 
             <div className="container-fluid py-4 text-center">
                 <h1 className="display-4 fw-bold mb-3">
@@ -34,7 +32,6 @@ const Banner = () => {
                     VER CATÁLOGO EXCLUSIVO
                 </Link>
             </div>
-
         </div>
     );
 };
