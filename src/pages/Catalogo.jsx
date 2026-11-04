@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import productos from '../data/productos';
 import { Card, Row, Col, Button, Form, InputGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { FiShoppingCart, FiSearch } from "react-icons/fi";
+import { FiSearch } from "react-icons/fi";
 
 function Catalogo({ agregarAlCarrito }) {
   const [busqueda, setBusqueda] = useState('');
@@ -123,7 +123,6 @@ function Catalogo({ agregarAlCarrito }) {
                         }
                     </Card.Text>
                       
-                    {/* Zona de Botones - Usando 100% del ancho para no quedar escondidos */}
                     <div className="d-flex gap-2">
                         <Button 
                             as={Link} 

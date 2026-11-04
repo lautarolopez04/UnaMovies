@@ -1,16 +1,44 @@
-# React + Vite
+# UNAMOVIES - TP 1 Construcción de interfaces de usuarios
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Nombre del proyecto: UNAMOVIES
+Se trata de una aplicación web desarrollada como primer TP de la materia. Es  un ecommerce  de películas donde los usuarios pueden navegar de forma fluida por distintas páginas, hacer búsquedas en tiempo real, aplicar filtros en el catálogo, añadir productos al carrito, gestionar su compra y poder crear su cuenta de usuario a través de un formulario.
 
-Currently, two official plugins are available:
+# TECNOLOGÍAS UTILIZADAS:
+ **React** (v18.3.1) - Librería de JavaScript para la construcción de interfaces de usuario basadas en componentes.
+ **Vite** (v5.4.1) - Entorno de desarrollo y empaquetador ultrarrápido.
+ **React Router DOM** (v6.26.2) - Biblioteca para el manejo de rutas y navegación dinámicas (Single Page Application).
+ **Bootstrap** (v5.3.8) & **React-Bootstrap** (v2.10.10) - Framework de estilos y componentes adaptativos para el diseño responsivo.
+ **React Icons** (v5.3.0) - Biblioteca de React para incluir íconos vectoriales en aplicaciones web.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+# PASOS PARA INSTALAR Y CORRER EL PROYECTO:
+1. Clonar el repositorio:
+```bash
+git clone https://github.com/lautarolopez04/UnaMovies.git
+```
 
-## React Compiler
+2. Entrar a la carpeta del proyecto:
+```bash
+cd UnaMovies
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+3. Instalar las dependencias necesarias:
+```bash
+npm install
+```
 
-## Expanding the ESLint configuration
+4. Iniciar el servidor de desarrollo:
+```bash
+npm run dev
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+5. Abrir el enlace local que muestre la terminal:
+```bash
+http://localhost:5173/
+```
+
+# INTEGRANTES:
+
+- Gomez, Florencia
+- Lopez, Lautaro
+- Palacios, Joaquin
+- Folco, Camila Belén
