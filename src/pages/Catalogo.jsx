@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import productos from '../data/productos';
 import { Card, Row, Col, Button, Form, InputGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -9,11 +9,11 @@ function Catalogo({ agregarAlCarrito }) {
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('');
   const [ordenPrecio, setOrdenPrecio] = useState('');
 
-  const categorias = [...new Set(productos.map(p => p.categoria))];
+  const categorias = [...new Set(productos.flatMap(p => p.categoria.split(' / ')))];
 
   const productosFiltrados = productos.filter(producto => {
     const coincideNombre = producto.nombre.toLowerCase().includes(busqueda.toLowerCase());
-    const coincideCategoria = categoriaSeleccionada === '' || producto.categoria === categoriaSeleccionada;
+    const coincideCategoria = categoriaSeleccionada === '' || producto.categoria.toLowerCase().includes(categoriaSeleccionada.toLowerCase());
     return coincideNombre && coincideCategoria;
   });
 
@@ -22,6 +22,20 @@ function Catalogo({ agregarAlCarrito }) {
     if (ordenPrecio === 'desc') return b.precio - a.precio;
     return 0;
   });
+
+  const [paginaActual, setPaginaActual] = useState(1);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [paginaActual]);
+
+  const peliculasPorPagina = 18;
+
+  const indiceUltimo = paginaActual * peliculasPorPagina;
+  const indicePrimero = indiceUltimo - peliculasPorPagina;
+
+  const peliculasMostradas = productosFiltrados.slice(indicePrimero, indiceUltimo);
+  const totalPaginas = Math.ceil(productosFiltrados.length / peliculasPorPagina);
 
   return (
     <div className="container text-light mt-5 pb-5">
@@ -76,7 +90,7 @@ function Catalogo({ agregarAlCarrito }) {
 
       <Row className="g-4">
         {productosFinales.length > 0 ? (
-          productosFinales.map((producto) => (
+          peliculasMostradas.map((producto) => (
             <Col key={producto.id} xs={12} md={6} lg={4}>
               <Card className="h-100 bg-dark text-light rounded-4 p-3 shadow border-secondary">
                 <img
@@ -85,30 +99,49 @@ function Catalogo({ agregarAlCarrito }) {
                   alt={producto.nombre}
                   style={{ height: "250px", objectFit: "cover" }}
                 />
-                <Card.Body className="d-flex flex-column">
-                  <Card.Title className="fw-bold">{producto.nombre}</Card.Title>
-                  <Card.Text className="text-danger fw-bold fs-5">${producto.precio}</Card.Text>
-                  <Card.Text className="text-secondary small">Categoría: {producto.categoria}</Card.Text>
-                  <Card.Text className="small">
-                    {producto.stock > 0
-                      ? `Stock: ${producto.stock}`
-                      : <span className="text-danger fw-bold">Sin stock</span>}
-                  </Card.Text>
-
-                  <div className="mt-auto d-flex gap-2">
-                    <Button as={Link} to={`/producto/${producto.id}`} variant="outline-light" size="sm" className="w-50">
-                      Ver detalle
-                    </Button>
-                    <Button
-                      variant="danger"
-                      size="sm"
-                      className="w-50"
-                      disabled={producto.stock === 0}
-                      onClick={() => agregarAlCarrito(producto)}
-                    >
-                      <FiShoppingCart /> {producto.stock > 0 ? 'Agregar' : 'Agotado'}
-                    </Button>
-                  </div>
+                <Card.Body className="d-flex flex-column p-3">
+                    <Card.Title className="fw-bold fs-4 mb-2 text-white">
+                        {producto.nombre}
+                    </Card.Title>
+                          
+                    <Card.Text className="text-secondary small mb-3">
+                        Categoría: {producto.categoria}
+                    </Card.Text>
+                          
+                    <Card.Text className="text-light" style={{ fontSize: '0.9rem', height: '80px', overflow: 'hidden' }}>
+                        {producto.sinapsis}
+                    </Card.Text>
+                          
+                    <div className="mt-auto mb-3">
+                        <span className="fs-3 fw-bold text-success">${producto.precio}</span>
+                    </div>
+                          
+                    <Card.Text className="small mb-3">
+                        {producto.stock > 0 
+                            ? <span className="text-info fw-bold">Stock: {producto.stock} disponibles</span>
+                            : <span className="text-danger fw-bold">¡Agotado!</span>
+                        }
+                    </Card.Text>
+                      
+                    {/* Zona de Botones - Usando 100% del ancho para no quedar escondidos */}
+                    <div className="d-flex gap-2">
+                        <Button 
+                            as={Link} 
+                            to={`/producto/${producto.id}`} 
+                            variant="outline-light" 
+                            className="w-50 fw-bold"
+                        >
+                            Detalles
+                        </Button>
+                        <Button
+                            variant="danger"
+                            className="w-50 fw-bold"
+                            disabled={producto.stock === 0}
+                            onClick={() => agregarAlCarrito(producto)}
+                        >
+                            {producto.stock > 0 ? 'Agregar' : 'Sin Stock'}
+                        </Button>
+                    </div>
                 </Card.Body>
               </Card>
             </Col>
@@ -118,6 +151,27 @@ function Catalogo({ agregarAlCarrito }) {
             <h4 className="text-secondary">No encontramos películas con esos filtros.</h4>
           </Col>
         )}
+      <div className="d-flex justify-content-center align-items-center mt-5 mb-5 gap-3">
+          <button 
+              className="btn btn-outline-light" 
+              onClick={() => setPaginaActual(paginaActual - 1)}
+              disabled={paginaActual === 1}
+          >
+              ←
+          </button>
+
+          <span className="text-light fw-bold fs-5">
+              {paginaActual} de {totalPaginas}
+          </span>
+
+          <button
+              className="btn btn-danger" 
+              onClick={() => setPaginaActual(paginaActual + 1)}
+              disabled={paginaActual === totalPaginas}
+          >
+              Siguiente
+          </button>
+      </div>
       </Row>
     </div>
   );
