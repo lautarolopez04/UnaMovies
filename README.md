@@ -4,11 +4,11 @@
 Se trata de una aplicación web desarrollada como primer TP de la materia. Es  un ecommerce  de películas donde los usuarios pueden navegar de forma fluida por distintas páginas, hacer búsquedas en tiempo real, aplicar filtros en el catálogo, añadir productos al carrito, gestionar su compra y poder crear su cuenta de usuario a través de un formulario.
 
 # TECNOLOGÍAS UTILIZADAS:
- **React** (v18.3.1) - Librería de JavaScript para la construcción de interfaces de usuario basadas en componentes.
- **Vite** (v5.4.1) - Entorno de desarrollo y empaquetador ultrarrápido.
- **React Router DOM** (v6.26.2) - Biblioteca para el manejo de rutas y navegación dinámicas (Single Page Application).
- **Bootstrap** (v5.3.8) & **React-Bootstrap** (v2.10.10) - Framework de estilos y componentes adaptativos para el diseño responsivo.
- **React Icons** (v5.3.0) - Biblioteca de React para incluir íconos vectoriales en aplicaciones web.
+ - **React** (v18.3.1) - Librería de JavaScript para la construcción de interfaces de usuario basadas en componentes.
+ - **Vite** (v5.4.1) - Entorno de desarrollo y empaquetador ultrarrápido.
+ - **React Router DOM** (v6.26.2) - Biblioteca para el manejo de rutas y navegación dinámicas (Single Page Application).
+ - **Bootstrap** (v5.3.8) & **React-Bootstrap** (v2.10.10) - Framework de estilos y componentes adaptativos para el diseño responsivo.
+ - **React Icons** (v5.3.0) - Biblioteca de React para incluir íconos vectoriales en aplicaciones web.
 
 # PASOS PARA INSTALAR Y CORRER EL PROYECTO:
 1. Clonar el repositorio:

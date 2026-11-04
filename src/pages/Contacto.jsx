@@ -191,7 +191,7 @@ function Contacto({ carrito }) {
               )}
               {success && (
                 <div className='alert alert-success mt-3'>
-                  Te registraste con éxito
+                  ¡Compra confirmada!
                 </div>
               )}
             </div>
