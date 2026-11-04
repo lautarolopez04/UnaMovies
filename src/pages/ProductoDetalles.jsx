@@ -19,8 +19,7 @@ function ProductoDetalles({ agregarAlCarrito }) {
   return (
     <Container className="py-5 text-light">
       <Link to="/catalogo" className="btn btn-outline-secondary mb-4">
-        {" "}
-        Volver{" "}
+        Ir a catálogo
       </Link>
       <Row className="align-items-center bg-dark p-4 rounded-4 border border-secondary shadow">
         <Col md={6} className="text-center mb-4 mb-md-0">
@@ -34,8 +33,7 @@ function ProductoDetalles({ agregarAlCarrito }) {
 
         <Col md={6} className="columnaDerecha">
           <Badge bg="danger" className="mb-2 text-uppercase px-3 py-2">
-            {" "}
-            {pelicula.categoria}{" "}
+            {pelicula.categoria}
           </Badge>
           <h2 className="fw-bold mb-3">{pelicula.nombre}</h2>
           <h3 className="text-danger fw-bold mb-3">${pelicula.precio}</h3>

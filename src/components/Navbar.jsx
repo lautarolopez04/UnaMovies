@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { FiShoppingCart } from "react-icons/fi";
 import logo from "../assets/logo.png";
 
-function Navbar ({ carrito = [], cantidadTotal = 0 }) {
+function Navbar ({ cantidadTotal = 0 }) {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark px-4 shadow-sm sticky-top py-2" style={{backgroundColor: "#121212"}}>
       <div className="container-fluid">
@@ -41,8 +41,7 @@ function Navbar ({ carrito = [], cantidadTotal = 0 }) {
           >
             <FiShoppingCart size={18} />
             <span className="badge rounded-pill bg-danger">
-              {" "}
-              {cantidadTotal || 0}{" "}
+              {cantidadTotal}
             </span>
             <span>Carrito</span>
           </NavLink>

@@ -13,7 +13,6 @@ function Carrito({ carrito = [], sumarCantidad, restarCantidad, eliminarProducto
   return (
     <Container className="py-5">
       <h2 className="text-light fw-bold mb-4">
-        {" "}
         <FiShoppingCart /> Tu Carrito
       </h2>
 

@@ -152,13 +152,13 @@ const productos = [
     },
     {
         id: 15,
-        nombre: "Obsesión",
-        imagen: "https://www.acmodasi.in/amdb/images/movie/w1920/133/97/obsession-2026-908173.webp",
-        categoria: "Suspenso / Drama",
-        precio: 10500,
-        sinapsis: "Cuando el deseo cruza todos los límites, nadie está a salvo de las consecuencias.",
-        descripción: "Un exitoso trabajador financiero con una esposa amorosa y una carrera prometedora ve su vida desmoronarse cuando una trabajadora temporal comienza a acosarlo implacablemente, poniendo en peligro todo lo que ha construido.",
-        stock: 4
+        nombre: "El Increíble Castillo Vagabundo",
+        imagen: "https://wallpapers.com/images/hd/intro-scene-howl-s-moving-castle-cml6b3ml1hxx1nk2.jpg",
+        categoria: "Animación / Fantasía",
+        precio: 14500,
+        sinapsis: "Una maldición inesperada, un demonio de fuego y una fortaleza mecánica que camina entre las nubes.",
+        descripción: "Una joven y tímida sombrerera es víctima del hechizo de una bruja celosa que la transforma en una anciana de noventa años. En su búsqueda para romper el encantamiento, se refugia en el castillo ambulante de un misterioso y apuesto mago que oculta sus propios tormentos.",
+        stock: 10
     },
     {
         id: 16,
@@ -762,13 +762,13 @@ const productos = [
     },
     {
         id: 76,
-        nombre: "Oppenheimer",
-        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUMDDnZjtKdLUS8lghsXaHaLqw8EdeUByGk6FGOCb0rZdKq0SUgqzkUr-h&s=10",
-        categoria: "Drama / Historia",
-        precio: 15000,
-        sinapsis: "El hombre que descifró el fuego de las estrellas y cambió el destino de la humanidad para siempre.",
-        descripción: "Durante la Segunda Guerra Mundial, el brillante físico teórico J. Robert Oppenheimer es designado para liderar el ultrasecreto Proyecto Manhattan en el desierto de Los Álamos, enfrentándose al dilema moral de arriesgarse a destruir el mundo con tal de poner fin al conflicto.",
-        stock: 12
+        nombre: "Mi Vecino Totoro",
+        imagen: "https://i.pinimg.com/736x/5a/7e/99/5a7e997ac1379eeab7cf637d3b079fd1.jpg",
+        categoria: "Animación / Familiar",
+        precio: 14000,
+        sinapsis: "En el corazón del bosque vive un guardián gigante y peludo que solo los niños pueden ver.",
+        descripción: "Dos pequeñas hermanas se mudan al campo con su padre para estar más cerca del hospital donde se recupera su madre. Mientras exploran su nueva casa y los alrededores, descubren que el bosque cercano está habitado por criaturas mágicas y espíritus ancestrales muy amigables.",
+        stock: 10
     },
     {
         id: 77,
@@ -862,13 +862,13 @@ const productos = [
     },
     {
         id: 86,
-        nombre: "Mi Vecino Totoro",
-        imagen: "https://i.pinimg.com/736x/5a/7e/99/5a7e997ac1379eeab7cf637d3b079fd1.jpg",
-        categoria: "Animación / Familiar",
-        precio: 14000,
-        sinapsis: "En el corazón del bosque vive un guardián gigante y peludo que solo los niños pueden ver.",
-        descripción: "Dos pequeñas hermanas se mudan al campo con su padre para estar más cerca del hospital donde se recupera su madre. Mientras exploran su nueva casa y los alrededores, descubren que el bosque cercano está habitado por criaturas mágicas y espíritus ancestrales muy amigables.",
-        stock: 10
+        nombre: "Oppenheimer",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUMDDnZjtKdLUS8lghsXaHaLqw8EdeUByGk6FGOCb0rZdKq0SUgqzkUr-h&s=10",
+        categoria: "Drama / Historia",
+        precio: 15000,
+        sinapsis: "El hombre que descifró el fuego de las estrellas y cambió el destino de la humanidad para siempre.",
+        descripción: "Durante la Segunda Guerra Mundial, el brillante físico teórico J. Robert Oppenheimer es designado para liderar el ultrasecreto Proyecto Manhattan en el desierto de Los Álamos, enfrentándose al dilema moral de arriesgarse a destruir el mundo con tal de poner fin al conflicto.",
+        stock: 12
     },
     {
         id: 87,
@@ -892,16 +892,16 @@ const productos = [
     },
     {
         id: 89,
-        nombre: "El Increíble Castillo Vagabundo",
-        imagen: "https://wallpapers.com/images/hd/intro-scene-howl-s-moving-castle-cml6b3ml1hxx1nk2.jpg",
-        categoria: "Animación / Fantasía",
-        precio: 14500,
-        sinapsis: "Una maldición inesperada, un demonio de fuego y una fortaleza mecánica que camina entre las nubes.",
-        descripción: "Una joven y tímida sombrerera es víctima del hechizo de una bruja celosa que la transforma en una anciana de noventa años. En su búsqueda para romper el encantamiento, se refugia en el castillo ambulante de un misterioso y apuesto mago que oculta sus propios tormentos.",
-        stock: 10
+        nombre: "Obsesión",
+        imagen: "https://www.acmodasi.in/amdb/images/movie/w1920/133/97/obsession-2026-908173.webp",
+        categoria: "Suspenso / Drama",
+        precio: 10500,
+        sinapsis: "Cuando el deseo cruza todos los límites, nadie está a salvo de las consecuencias.",
+        descripción: "Un exitoso trabajador financiero con una esposa amorosa y una carrera prometedora ve su vida desmoronarse cuando una trabajadora temporal comienza a acosarlo implacablemente, poniendo en peligro todo lo que ha construido.",
+        stock: 4
     }
 
 ];
 
-export default productos
+export default productos;
 

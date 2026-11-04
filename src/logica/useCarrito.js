@@ -63,10 +63,6 @@ function useCarrito() {
     setCarrito(nuevoCarrito);
   };
 
-  const vaciarCarrito = () => {
-    setCarrito([]);
-  };
-
   const cantidadTotalItems = carrito.reduce(
     (acum, item) => acum + item.cantidad,
     0,
@@ -78,7 +74,6 @@ function useCarrito() {
     sumarCantidad,
     restarCantidad,
     eliminarProducto,
-    vaciarCarrito,
     mostrarToast,
     setMostrarToast,
     productoToast,

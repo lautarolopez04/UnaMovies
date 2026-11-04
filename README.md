@@ -1,6 +1,6 @@
-# UNAMOVIES - TP 1 Construcción de interfaces de usuarios
+# TP 1 Construcción de interfaces de usuarios
 
-# Nombre del proyecto: UNAMOVIES
+# UNAMOVIES
 Se trata de una aplicación web desarrollada como primer TP de la materia. Es  un ecommerce  de películas donde los usuarios pueden navegar de forma fluida por distintas páginas, hacer búsquedas en tiempo real, aplicar filtros en el catálogo, añadir productos al carrito, gestionar su compra y poder crear su cuenta de usuario a través de un formulario.
 
 # TECNOLOGÍAS UTILIZADAS:

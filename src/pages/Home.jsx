@@ -19,6 +19,8 @@ function Home() {
     }
   };
 
+  const ultimosProductos = productos.slice(-15).reverse();
+
   return (
     <>
       <div className="container py-5 text-light">
@@ -45,7 +47,7 @@ function Home() {
             className="d-flex gap-4 overflow-x-auto pb-4 px-2 scrollbar-none"
             style={{ scrollBehavior: "smooth", scrollbarWidth: "none" }}
           >
-            {productos.map((pelicula) => (
+            {ultimosProductos.map((pelicula) => (
               <div
                 key={pelicula.id}
                 className="flex-shrink-0 d-flex"

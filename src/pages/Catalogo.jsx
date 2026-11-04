@@ -34,8 +34,8 @@ function Catalogo({ agregarAlCarrito }) {
   const indiceUltimo = paginaActual * peliculasPorPagina;
   const indicePrimero = indiceUltimo - peliculasPorPagina;
 
-  const peliculasMostradas = productosFiltrados.slice(indicePrimero, indiceUltimo);
-  const totalPaginas = Math.ceil(productosFiltrados.length / peliculasPorPagina);
+  const peliculasMostradas = productosFinales.slice(indicePrimero, indiceUltimo);
+  const totalPaginas = Math.ceil(productosFinales.length / peliculasPorPagina);
 
   return (
     <div className="container text-light mt-5 pb-5">

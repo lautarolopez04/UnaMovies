@@ -18,7 +18,6 @@ function App() {
     sumarCantidad,
     restarCantidad,
     eliminarProducto,
-    vaciarCarrito,
     mostrarToast,
     setMostrarToast,
     productoToast,
@@ -28,7 +27,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="d-flex flex-column min-vh-100">
-        <Navbar carrito={carrito} cantidadTotal={cantidadTotalItems} />
+        <Navbar cantidadTotal={cantidadTotalItems} />
         <main className="flex-grow-1">
           <ToastContainer
             position="bottom-end"
@@ -84,7 +83,7 @@ function App() {
             <Route
               path="/contacto"
               element={
-                <Contacto vaciarCarrito={vaciarCarrito} carrito={carrito} />
+                <Contacto carrito={carrito} />
               }
             />
 
